@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin's Cambridge A-Level Mastery Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .week-container {
+            margin-bottom: 30px;
+        }
+        
+        .week-header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .week-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+        
+        .week-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .week-content {
+            background: white;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .week-content.active {
+            max-height: 2000px;
+        }
+        
+        .week-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .day-section {
+            padding: 25px;
+            border-left: 4px solid #3742fa;
+            margin: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+        
+        .day-title {
+            color: #3742fa;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subject-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 10px;
+            color: white;
+        }
+        
+        .physics {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        
+        .chemistry {
+            background: linear-gradient(135deg, #00d2d3, #54a0ff);
+        }
+        
+        .pattern-analysis {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .pattern-title {
+            color: #d63031;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .cambridge-tricks {
+            background: #d1ecf1;
+            border: 1px solid #b8daff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .tricks-title {
+            color: #0984e3;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .mastery-protocol {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .protocol-title {
+            color: #00b894;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .equation {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-family: 'Courier New', monospace;
+            margin: 5px 0;
+            display: inline-block;
+        }
+        
+        .formula-list {
+            background: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .checkpoint {
+            background: #ffe8e8;
+            border-left: 4px solid #ff4757;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .checkpoint-title {
+            color: #ff4757;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d2d3, #54a0ff);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .week-title {
+                font-size: 1.4rem;
+            }
+            
+            .day-section {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Cambridge A-Level Mastery Guide</h1>
+            <p class="subtitle">Topic-by-Topic Pattern Recognition & Question DNA Analysis</p>
+            <p class="subtitle">Physics 9702 | Chemistry 9701 | October-November 2025</p>
+        </header>
+
+        <!-- Week 1 -->
+        <div class="week-container">
+            <div class="week-header" onclick="toggleWeek(1)">
+                <div class="week-title">Week 1: Motion Mastery & Chemical Energetics</div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content" id="week1">
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Monday: Circular Motion - Cambridge's Question DNA
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Cambridge's Circular Motion Patterns</div>
+                        <p><strong>From Syllabus 12.1 & 12.2:</strong> Cambridge LOVES these 4 question types:</p>
+                        <ol>
+                            <li><strong>Angular/Linear Speed Conversion (2-3 marks):</strong> Always involves ω = 2π/T and v = rω</li>
+                            <li><strong>Centripetal Force Identification (4-6 marks):</strong> "What provides the centripetal force?" - tension, gravity, friction</li>
+                            <li><strong>Circular Motion + Gravity (6-8 marks):</strong> Satellites, conical pendulums, cars on banked curves</li>
+                            <li><strong>Energy in Circular Systems (4-6 marks):</strong> Combined with work-energy theorem</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Cambridge's Favorite Tricks</div>
+                        <ul>
+                            <li><strong>Unit Confusion:</strong> Mixing radians/degrees, rpm/rad s⁻¹</li>
+                            <li><strong>Direction Errors:</strong> Centripetal force points INWARD, never outward</li>
+                            <li><strong>Multiple Forces:</strong> "What provides" questions - often tension AND weight components</li>
+                            <li><strong>Vertical Circles:</strong> Speed varies - use energy conservation</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Essential Formulas:</strong><br>
+                        <span class="equation">ω = 2π/T = 2πf</span>
+                        <span class="equation">v = rω</span>
+                        <span class="equation">a = rω² = v²/r</span>
+                        <span class="equation">F = mrω² = mv²/r</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Tuesday: Born-Haber Cycles - Pattern Recognition
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Cambridge's Born-Haber Question DNA</div>
+                        <p><strong>From Syllabus 23.1:</strong> Every year features these patterns:</p>
+                        <ol>
+                            <li><strong>Cycle Construction (6-8 marks):</strong> Given enthalpy values, draw the cycle</li>
+                            <li><strong>Missing Value Calculation (4-6 marks):</strong> Usually lattice energy or electron affinity</li>
+                            <li><strong>Trend Explanations (4-5 marks):</strong> Why lattice energy increases with charge/decreases with size</li>
+                            <li><strong>Theoretical vs Experimental (3-4 marks):</strong> Covalent character in "ionic" compounds</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Cambridge's Born-Haber Traps</div>
+                        <ul>
+                            <li><strong>Sign Conventions:</strong> Lattice energy is EXOTHERMIC (negative ΔH)</li>
+                            <li><strong>Electron Affinity:</strong> First EA is exothermic, second is endothermic</li>
+                            <li><strong>Atomization:</strong> Always endothermic - breaking bonds</li>
+                            <li><strong>Ion Charges:</strong> Limited to +1,+2 and -1,-2 ions only</li>
+                        </ul>
+                    </div>
+
+                    <div class="mastery-protocol">
+                        <div class="protocol-title">🔧 Born-Haber Mastery Protocol</div>
+                        <ol>
+                            <li>Always start with elements in standard states</li>
+                            <li>Atomization → Ionization → Electron Affinity → Lattice Formation</li>
+                            <li>Apply Hess's Law: Sum of all steps = Formation enthalpy</li>
+                            <li>Check signs: Formation and Lattice energies are negative</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Wednesday: Gravitational Fields - Cambridge Patterns
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Gravitational Fields Question Types</div>
+                        <p><strong>From Syllabus 13.1-13.4:</strong> Cambridge's big 4:</p>
+                        <ol>
+                            <li><strong>Field Strength Calculations (3-4 marks):</strong> g = GM/r² applications</li>
+                            <li><strong>Orbital Mechanics (6-8 marks):</strong> Satellites, geostationary orbits</li>
+                            <li><strong>Gravitational Potential (4-6 marks):</strong> Work done calculations</li>
+                            <li><strong>Energy in Orbits (6-10 marks):</strong> Escape velocity, binding energy</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Gravitational Field Traps</div>
+                        <ul>
+                            <li><strong>Sign Conventions:</strong> Potential is NEGATIVE (bound systems)</li>
+                            <li><strong>Geostationary Orbits:</strong> Must be above equator, 24h period, west to east</li>
+                            <li><strong>Field vs Potential:</strong> Field is force per unit mass, potential is energy per unit mass</li>
+                            <li><strong>Uniform vs Point Mass:</strong> g constant near surface, g = GM/r² for point masses</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Key Equations:</strong><br>
+                        <span class="equation">F = Gm₁m₂/r²</span>
+                        <span class="equation">g = GM/r²</span>
+                        <span class="equation">φ = -GM/r</span>
+                        <span class="equation">Ep = -GMm/r</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Thursday: Electrochemistry Mastery
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Electrochemistry Question Patterns</div>
+                        <p><strong>From Syllabus 24.1-24.2:</strong> Cambridge's electrochemistry favorites:</p>
+                        <ol>
+                            <li><strong>Electrolysis Predictions (4-6 marks):</strong> What's produced at each electrode</li>
+                            <li><strong>Faraday Calculations (6-8 marks):</strong> Q = It, moles of electrons</li>
+                            <li><strong>Standard Electrode Potentials (6-8 marks):</strong> Cell EMF calculations</li>
+                            <li><strong>Nernst Equation Applications (4-6 marks):</strong> Concentration effects</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Electrochemistry Traps</div>
+                        <ul>
+                            <li><strong>Electrode Names:</strong> Anode = oxidation, Cathode = reduction</li>
+                            <li><strong>Aqueous vs Molten:</strong> Water competes in aqueous solutions</li>
+                            <li><strong>Standard Conditions:</strong> 298K, 1 atm, 1 mol/dm³ concentrations</li>
+                            <li><strong>Sign Conventions:</strong> Positive EMF = spontaneous reaction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checkpoint">
+                    <div class="checkpoint-title">🎯 Week 1 Mastery Checkpoint</div>
+                    <p><strong>Target:</strong> 85%+ on practice questions for each topic</p>
+                    <ul>
+                        <li>Complete 5 circular motion problems under timed conditions</li>
+                        <li>Construct 3 Born-Haber cycles from memory</li>
+                        <li>Solve 4 gravitational field problems (mix of calculation types)</li>
+                        <li>Predict electrolysis products for 6 different systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-container">
+            <div class="week-header" onclick="toggleWeek(2)">
+                <div class="week-title">Week 2: Oscillations & Organic Mechanisms</div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content" id="week2">
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Monday: Simple Harmonic Motion - Question DNA
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 SHM Question Patterns</div>
+                        <p><strong>From Syllabus 17.1-17.2:</strong> Cambridge's SHM formula:</p>
+                        <ol>
+                            <li><strong>Equation Derivation (4-6 marks):</strong> From a = -ω²x to x = x₀sin(ωt)</li>
+                            <li><strong>Energy Interchange (6-8 marks):</strong> KE ↔ PE analysis with graphs</li>
+                            <li><strong>Practical Applications (6-8 marks):</strong> Springs, pendulums, mass-spring systems</li>
+                            <li><strong>Damping & Resonance (4-6 marks):</strong> Graph interpretation and practical examples</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 SHM Cambridge Traps</div>
+                        <ul>
+                            <li><strong>Phase Relationships:</strong> Displacement, velocity, acceleration are 90° out of phase</li>
+                            <li><strong>Maximum Values:</strong> v_max = ωx₀, a_max = ω²x₀</li>
+                            <li><strong>Energy Equations:</strong> Total energy = ½mω²x₀² (constant)</li>
+                            <li><strong>Resonance:</strong> Maximum amplitude when driving frequency = natural frequency</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>SHM Essentials:</strong><br>
+                        <span class="equation">a = -ω²x</span>
+                        <span class="equation">x = x₀sin(ωt)</span>
+                        <span class="equation">v = ±ω√(x₀² - x²)</span>
+                        <span class="equation">E = ½mω²x₀²</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Tuesday: Arenes - Electrophilic Substitution Patterns
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Arenes Question DNA</div>
+                        <p><strong>From Syllabus 30.1:</strong> Cambridge LOVES these reaction types:</p>
+                        <ol>
+                            <li><strong>Mechanism Drawing (6-8 marks):</strong> Nitration, halogenation with curly arrows</li>
+                            <li><strong>Directing Effects (4-6 marks):</strong> -OH, -NH₂ vs -NO₂, -COOH directing patterns</li>
+                            <li><strong>Reaction Conditions (3-4 marks):</strong> Catalysts, temperatures for specific reactions</li>
+                            <li><strong>Side-chain vs Ring (4-5 marks):</strong> Predicting where substitution occurs</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Arenes Cambridge Traps</div>
+                        <ul>
+                            <li><strong>Electrophilic vs Nucleophilic:</strong> Benzene = electrophilic substitution only</li>
+                            <li><strong>Halogenation Conditions:</strong> FeBr₃ catalyst for ring, UV light for side-chain</li>
+                            <li><strong>Nitration Temperature:</strong> 25-60°C (NOT room temperature)</li>
+                            <li><strong>Activating Groups:</strong> -OH, -NH₂ activate ring (2,4,6 positions)</li>
+                        </ul>
+                    </div>
+
+                    <div class="mastery-protocol">
+                        <div class="protocol-title">🔧 Mechanism Drawing Protocol</div>
+                        <ol>
+                            <li>Generate electrophile (e.g., NO₂⁺ from HNO₃/H₂SO₄)</li>
+                            <li>Electrophile attacks benzene ring → carbocation intermediate</li>
+                            <li>Deprotonation restores aromaticity</li>
+                            <li>Always show curly arrows and formal charges</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Wednesday: Electric Fields - Cambridge Favorites
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Electric Fields Question Types</div>
+                        <p><strong>From Syllabus 18.1-18.5:</strong> Cambridge's electric field patterns:</p>
+                        <ol>
+                            <li><strong>Field Strength Calculations (3-4 marks):</strong> E = F/q, E = V/d applications</li>
+                            <li><strong>Motion in Uniform Fields (6-8 marks):</strong> Parallel plates, particle deflection</li>
+                            <li><strong>Point Charge Systems (6-8 marks):</strong> Coulomb's law, superposition</li>
+                            <li><strong>Electric Potential (4-6 marks):</strong> Work done, potential energy</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Electric Field Traps</div>
+                        <ul>
+                            <li><strong>Field Direction:</strong> Away from +ve charges, toward -ve charges</li>
+                            <li><strong>Uniform Fields:</strong> Parallel plates give E = V/d</li>
+                            <li><strong>Potential vs Field:</strong> V is scalar, E is vector</li>
+                            <li><strong>Motion Equations:</strong> Use kinematic equations with F = qE</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Electric Field Formulas:</strong><br>
+                        <span class="equation">E = F/q</span>
+                        <span class="equation">F = Q₁Q₂/(4πε₀r²)</span>
+                        <span class="equation">E = Q/(4πε₀r²)</span>
+                        <span class="equation">V = Q/(4πε₀r)</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Thursday: Transition Elements - Complex Ion Patterns
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Transition Elements Question DNA</div>
+                        <p><strong>From Syllabus 28.1-28.5:</strong> Cambridge's transition metal favorites:</p>
+                        <ol>
+                            <li><strong>Complex Ion Formulas (3-4 marks):</strong> Predict formula given metal, ligand, geometry</li>
+                            <li><strong>Ligand Exchange (4-6 marks):</strong> Color changes, equilibrium constants</li>
+                            <li><strong>Redox Reactions (6-8 marks):</strong> MnO₄⁻ reactions, calculations</li>
+                            <li><strong>Color & d-orbitals (4-6 marks):</strong> Splitting diagrams, complementary colors</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Transition Element Traps</div>
+                        <ul>
+                            <li><strong>Oxidation States:</strong> Variable oxidation states due to similar 3d/4s energies</li>
+                            <li><strong>Complex Geometry:</strong> 6 coordinate = octahedral, 4 coordinate = tetrahedral/square planar</li>
+                            <li><strong>Color Origins:</strong> d-d transitions, not d-orbital filling</li>
+                            <li><strong>Catalysis:</strong> Multiple oxidation states allow electron transfer</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checkpoint">
+                    <div class="checkpoint-title">🎯 Week 2 Mastery Checkpoint</div>
+                    <p><strong>Target:</strong> 85%+ on mixed practice problems</p>
+                    <ul>
+                        <li>Solve 5 SHM problems with energy analysis</li>
+                        <li>Draw 3 electrophilic substitution mechanisms</li>
+                        <li>Calculate electric fields for 4 different charge configurations</li>
+                        <li>Predict colors and formulas for 6 complex ions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week-container">
+            <div class="week-header" onclick="toggleWeek(3)">
+                <div class="week-title">Week 3: Capacitance & Kinetics Deep Dive</div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content" id="week3">
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Monday: Capacitance - Cambridge Question Patterns
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Capacitance Question DNA</div>
+                        <p><strong>From Syllabus 19.1-19.3:</strong> Cambridge's capacitor classics:</p>
+                        <ol>
+                            <li><strong>Series/Parallel Combinations (4-6 marks):</strong> Calculate total capacitance</li>
+                            <li><strong>Energy Storage (4-6 marks):</strong> W = ½QV = ½CV² applications</li>
+                            <li><strong>Charging/Discharging (6-8 marks):</strong> Exponential graphs, time constants</li>
+                            <li><strong>Practical Applications (4-5 marks):</strong> Smoothing circuits, timing circuits</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Capacitance Cambridge Traps</div>
+                        <ul>
+                            <li><strong>Series vs Parallel:</strong> Capacitors opposite to resistors (1/C_total for series)</li>
+                            <li><strong>Exponential Decay:</strong> Use τ = RC for time constant</li>
+                            <li><strong>Energy Storage:</strong> Energy ∝ V² (quadratic relationship)</li>
+                            <li><strong>Initial Conditions:</strong> At t=0, capacitor acts like short circuit</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Capacitance Essentials:</strong><br>
+                        <span class="equation">C = Q/V</span>
+                        <span class="equation">W = ½QV = ½CV²</span>
+                        <span class="equation">τ = RC</span>
+                        <span class="equation">V = V₀e^(-t/RC)</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Tuesday: Reaction Kinetics - Rate Equation Mastery
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Kinetics Question Patterns</div>
+                        <p><strong>From Syllabus 26.1-26.2:</strong> Cambridge kinetics blueprint:</p>
+                        <ol>
+                            <li><strong>Rate Equation Determination (6-8 marks):</strong> From experimental data or graphs</li>
+                            <li><strong>Rate Constant Calculation (4-6 marks):</strong> Using initial rates or half-life</li>
+                            <li><strong>Mechanism Analysis (6-8 marks):</strong> Rate-determining step identification</li>
+                            <li><strong>Catalyst Mechanisms (4-6 marks):</strong> Homogeneous vs heterogeneous</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Kinetics Cambridge Traps</div>
+                        <ul>
+                            <li><strong>Order Determination:</strong> Order ≠ stoichiometric coefficient</li>
+                            <li><strong>Half-life Method:</strong> Only works for first-order reactions (constant t₁/₂)</li>
+                            <li><strong>Rate-determining Step:</strong> Slowest step determines overall rate</li>
+                            <li><strong>Catalyst Types:</strong> Homogeneous = same phase, heterogeneous = different phase</li>
+                        </ul>
+                    </div>
+
+                    <div class="mastery-protocol">
+                        <div class="protocol-title">🔧 Rate Equation Protocol</div>
+                        <ol>
+                            <li>Identify rate equation form: rate = k[A]^m[B]^n</li>
+                            <li>Use initial rates method or half-life method</li>
+                            <li>Calculate rate constant with correct units</li>
+                            <li>Link to mechanism via rate-determining step</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Wednesday: Magnetic Fields - Force & Induction Patterns
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Magnetic Fields Question DNA</div>
+                        <p><strong>From Syllabus 20.1-20.5:</strong> Cambridge magnetic field favorites:</p>
+                        <ol>
+                            <li><strong>Force on Conductors (4-6 marks):</strong> F = BILsinθ, Fleming's left-hand rule</li>
+                            <li><strong>Charged Particle Motion (6-8 marks):</strong> Circular paths, Hall effect</li>
+                            <li><strong>Electromagnetic Induction (6-8 marks):</strong> Faraday's law, Lenz's law</li>
+                            <li><strong>Field Patterns (3-4 marks):</strong> Sketching field lines for various configurations</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Magnetic Field Traps</div>
+                        <ul>
+                            <li><strong>Direction Rules:</strong> Fleming's left (force), right (induced EMF)</li>
+                            <li><strong>Flux Linkage:</strong> Φ = BA, but also consider coil turns</li>
+                            <li><strong>Lenz's Law:</strong> Induced effects oppose the change causing them</li>
+                            <li><strong>Hall Voltage:</strong> V_H = BI/(ntq) - depends on charge density</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Magnetic Field Formulas:</strong><br>
+                        <span class="equation">F = BILsinθ</span>
+                        <span class="equation">F = BQvsinθ</span>
+                        <span class="equation">Φ = BA</span>
+                        <span class="equation">ε = -dΦ/dt</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Thursday: Equilibria - Acids, Bases & Buffer Systems
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Equilibria Question Patterns</div>
+                        <p><strong>From Syllabus 25.1:</strong> Cambridge equilibria essentials:</p>
+                        <ol>
+                            <li><strong>pH Calculations (6-8 marks):</strong> Strong/weak acids, buffer systems</li>
+                            <li><strong>Buffer Mechanisms (4-6 marks):</strong> How buffers resist pH change</li>
+                            <li><strong>Ksp Applications (4-6 marks):</strong> Solubility calculations, common ion effect</li>
+                            <li><strong>Conjugate Pairs (3-4 marks):</strong> Identifying acid-base relationships</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Equilibria Cambridge Traps</div>
+                        <ul>
+                            <li><strong>Strong vs Weak:</strong> Strong acids/bases completely dissociate</li>
+                            <li><strong>Buffer Composition:</strong> Need weak acid + conjugate base (or vice versa)</li>
+                            <li><strong>Common Ion Effect:</strong> Reduces solubility of ionic compounds</li>
+                            <li><strong>pH Scale:</strong> pH + pOH = 14 at 298K</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checkpoint">
+                    <div class="checkpoint-title">🎯 Week 3 Mastery Checkpoint</div>
+                    <p><strong>Target:</strong> 85%+ accuracy on complex problem solving</p>
+                    <ul>
+                        <li>Solve 5 capacitor circuit problems (series/parallel combinations)</li>
+                        <li>Determine rate equations from 3 different experimental datasets</li>
+                        <li>Calculate magnetic forces and induced EMFs for 4 scenarios</li>
+                        <li>Calculate pH for 6 different acid/base/buffer systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="week-container">
+            <div class="week-header" onclick="toggleWeek(4)">
+                <div class="week-title">Week 4: Quantum Physics & Thermodynamics Integration</div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content" id="week4">
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Monday: Quantum Physics - Photoelectric Effect Mastery
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Quantum Physics Question DNA</div>
+                        <p><strong>From Syllabus 22.1-22.4:</strong> Cambridge quantum patterns:</p>
+                        <ol>
+                            <li><strong>Photoelectric Calculations (6-8 marks):</strong> hf = Φ + ½mv²max applications</li>
+                            <li><strong>Wave-Particle Duality (4-6 marks):</strong> de Broglie wavelength calculations</li>
+                            <li><strong>Energy Level Transitions (4-6 marks):</strong> Atomic spectra, photon energies</li>
+                            <li><strong>Experimental Evidence (3-4 marks):</strong> Millikan's experiment, electron diffraction</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Quantum Physics Traps</div>
+                        <ul>
+                            <li><strong>Threshold Frequency:</strong> Below f₀, NO photoelectrons regardless of intensity</li>
+                            <li><strong>Kinetic Energy:</strong> KE depends on frequency, NOT intensity</li>
+                            <li><strong>Current vs Energy:</strong> Current ∝ intensity, KE ∝ frequency</li>
+                            <li><strong>de Broglie:</strong> λ = h/p applies to ALL particles, not just electrons</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Quantum Essentials:</strong><br>
+                        <span class="equation">E = hf</span>
+                        <span class="equation">hf = Φ + KEmax</span>
+                        <span class="equation">λ = h/p</span>
+                        <span class="equation">hf = E₁ - E₂</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Tuesday: Thermodynamics - Entropy & Gibbs Free Energy
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Thermodynamics Question DNA</div>
+                        <p><strong>From Syllabus 23.3-23.4:</strong> Cambridge thermodynamics focus:</p>
+                        <ol>
+                            <li><strong>Entropy Predictions (3-4 marks):</strong> Sign of ΔS for phase changes, reactions</li>
+                            <li><strong>Gibbs Calculations (6-8 marks):</strong> ΔG = ΔH - TΔS applications</li>
+                            <li><strong>Feasibility Predictions (4-5 marks):</strong> Using ΔG to predict spontaneity</li>
+                            <li><strong>Temperature Effects (4-6 marks):</strong> How T affects reaction feasibility</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Thermodynamics Traps</div>
+                        <ul>
+                            <li><strong>Entropy Signs:</strong> +ΔS for melting, vaporizing, dissolving, more gas molecules</li>
+                            <li><strong>Gibbs Sign:</strong> -ΔG = feasible (spontaneous), +ΔG = not feasible</li>
+                            <li><strong>Temperature Dependence:</strong> -TΔS term can change feasibility with T</li>
+                            <li><strong>Units:</strong> ΔH in kJ/mol, ΔS in J/mol·K - watch the conversion!</li>
+                        </ul>
+                    </div>
+
+                    <div class="mastery-protocol">
+                        <div class="protocol-title">🔧 Gibbs Calculation Protocol</div>
+                        <ol>
+                            <li>Calculate ΔS from standard entropy values</li>
+                            <li>Convert ΔS to kJ/mol·K (divide by 1000)</li>
+                            <li>Apply ΔG = ΔH - TΔS at given temperature</li>
+                            <li>Interpret sign: negative = feasible</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Wednesday: Nuclear Physics - Decay & Binding Energy
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Nuclear Physics Question DNA</div>
+                        <p><strong>From Syllabus 23.1-23.2:</strong> Cambridge nuclear favorites:</p>
+                        <ol>
+                            <li><strong>Binding Energy Calculations (6-8 marks):</strong> Mass defect, E = mc²</li>
+                            <li><strong>Decay Calculations (6-8 marks):</strong> λ, half-life, exponential decay</li>
+                            <li><strong>Nuclear Reactions (4-6 marks):</strong> Balancing equations, energy release</li>
+                            <li><strong>Fusion vs Fission (4-5 marks):</strong> Energy considerations, binding energy per nucleon</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Nuclear Physics Traps</div>
+                        <ul>
+                            <li><strong>Mass-Energy Units:</strong> Use atomic mass units (u) and conversion factor</li>
+                            <li><strong>Activity vs Count Rate:</strong> Activity = λN, count rate includes detection efficiency</li>
+                            <li><strong>Half-life Formula:</strong> λ = 0.693/t₁/₂</li>
+                            <li><strong>Binding Energy Graph:</strong> Peak at Fe-56, fusion for light nuclei, fission for heavy</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Nuclear Physics Formulas:</strong><br>
+                        <span class="equation">E = mc²</span>
+                        <span class="equation">A = λN</span>
+                        <span class="equation">N = N₀e^(-λt)</span>
+                        <span class="equation">λ = 0.693/t₁/₂</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Thursday: Organic Synthesis - Nitrogen Compounds & Polymers
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Organic Synthesis Question DNA</div>
+                        <p><strong>From Syllabus 34.1-35.3:</strong> Cambridge organic synthesis patterns:</p>
+                        <ol>
+                            <li><strong>Multi-step Synthesis (8-10 marks):</strong> Plan synthetic routes using given reactions</li>
+                            <li><strong>Functional Group Interconversions (6-8 marks):</strong> Amine, amide, amino acid chemistry</li>
+                            <li><strong>Polymer Identification (4-6 marks):</strong> Addition vs condensation, repeat units</li>
+                            <li><strong>Reaction Mechanism Analysis (4-6 marks):</strong> Addition-elimination mechanisms</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Organic Synthesis Traps</div>
+                        <ul>
+                            <li><strong>Amine Basicity:</strong> Aliphatic > NH₃ > aromatic amines</li>
+                            <li><strong>Amide Formation:</strong> Acyl chloride + amine → amide + HCl</li>
+                            <li><strong>Polymer Types:</strong> Addition = C=C, Condensation = two different functional groups</li>
+                            <li><strong>Peptide Bonds:</strong> Formed between amino acids via condensation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checkpoint">
+                    <div class="checkpoint-title">🎯 Week 4 Mastery Checkpoint</div>
+                    <p><strong>Target:</strong> 90%+ on integrated problem solving</p>
+                    <ul>
+                        <li>Solve 5 photoelectric effect problems with energy calculations</li>
+                        <li>Calculate ΔG for 4 reactions at different temperatures</li>
+                        <li>Perform 3 nuclear decay/binding energy calculations</li>
+                        <li>Design 2 multi-step organic synthesis routes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week-container">
+            <div class="week-header" onclick="toggleWeek(5)">
+                <div class="week-title">Week 5: Integration Week - Mixed Problem Solving</div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content" id="week5">
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Monday: Cross-Topic Integration - Fields & Motion
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Integration Challenge Patterns</div>
+                        <p><strong>Cambridge LOVES combining topics:</strong></p>
+                        <ol>
+                            <li><strong>Gravitational + Circular Motion:</strong> Satellite orbits, escape velocity</li>
+                            <li><strong>Electric + Magnetic Fields:</strong> Velocity selectors, mass spectrometry</li>
+                            <li><strong>SHM + Energy:</strong> Oscillating systems with varying amplitude</li>
+                            <li><strong>Quantum + Wave Properties:</strong> Electron diffraction, wave-particle duality</li>
+                        </ol>
+                    </div>
+
+                    <div class="mastery-protocol">
+                        <div class="protocol-title">🔧 Integration Problem Protocol</div>
+                        <ol>
+                            <li><strong>Identify:</strong> What topics are being combined?</li>
+                            <li><strong>List:</strong> All relevant equations from each topic</li>
+                            <li><strong>Connect:</strong> Find the linking variable (often force, energy, or time)</li>
+                            <li><strong>Solve:</strong> Use systematic substitution</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Tuesday: Cross-Topic Integration - Energetics & Kinetics
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Chemistry Integration Patterns</div>
+                        <p><strong>Cambridge integration favorites:</strong></p>
+                        <ol>
+                            <li><strong>Thermodynamics + Equilibrium:</strong> ΔG and equilibrium constants</li>
+                            <li><strong>Kinetics + Mechanisms:</strong> Rate equations and reaction pathways</li>
+                            <li><strong>Electrochemistry + Thermodynamics:</strong> ΔG = -nEF relationships</li>
+                            <li><strong>Organic + Physical:</strong> Reaction mechanisms with energy profiles</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Integration Success Tips</div>
+                        <ul>
+                            <li><strong>Energy Connections:</strong> ΔG = -nEF links electrochemistry to thermodynamics</li>
+                            <li><strong>Rate-Equilibrium Link:</strong> Catalysts affect rate, not equilibrium position</li>
+                            <li><strong>Mechanism-Rate Link:</strong> Slowest step determines overall rate</li>
+                            <li><strong>Structure-Property Link:</strong> Molecular structure determines reactivity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag physics">PHYSICS</span>
+                        Wednesday: Medical Physics Applications
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Medical Physics Question DNA</div>
+                        <p><strong>From Syllabus 24.1-24.3:</strong> Cambridge medical applications:</p>
+                        <ol>
+                            <li><strong>Ultrasound Calculations (6-8 marks):</strong> Acoustic impedance, reflection coefficients</li>
+                            <li><strong>X-ray Attenuation (4-6 marks):</strong> I = I₀e^(-μx) applications</li>
+                            <li><strong>PET Scanning (4-6 marks):</strong> Positron annihilation, gamma ray detection</li>
+                            <li><strong>Practical Applications (3-4 marks):</strong> Advantages/disadvantages of techniques</li>
+                        </ol>
+                    </div>
+
+                    <div class="formula-list">
+                        <strong>Medical Physics Formulas:</strong><br>
+                        <span class="equation">Z = ρc</span>
+                        <span class="equation">I_R/I₀ = (Z₁-Z₂)²/(Z₁+Z₂)²</span>
+                        <span class="equation">I = I₀e^(-μx)</span>
+                    </div>
+                </div>
+
+                <div class="day-section">
+                    <div class="day-title">
+                        <span class="subject-tag chemistry">CHEMISTRY</span>
+                        Thursday: Analytical Techniques - NMR & Chromatography
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Analytical Techniques Question DNA</div>
+                        <p><strong>From Syllabus 37.1-37.4:</strong> Cambridge analytical focus:</p>
+                        <ol>
+                            <li><strong>¹H NMR Analysis (6-8 marks):</strong> Chemical shifts, splitting patterns, integration</li>
+                            <li><strong>¹³C NMR Interpretation (4-6 marks):</strong> Number of carbon environments</li>
+                            <li><strong>Chromatography (3-4 marks):</strong> Rf values, retention times</li>
+                            <li><strong>Structure Determination (8-10 marks):</strong> Combining multiple analytical techniques</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 NMR Analysis Traps</div>
+                        <ul>
+                            <li><strong>Chemical Shifts:</strong> δ 0-3 (alkyl), δ 3-5 (C-O), δ 7-8 (aromatic)</li>
+                            <li><strong>Splitting Patterns:</strong> n+1 rule for adjacent equivalent protons</li>
+                            <li><strong>Integration:</strong> Relative areas give proton ratios</li>
+                            <li><strong>D₂O Exchange:</strong> O-H and N-H peaks disappear</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checkpoint">
+                    <div class="checkpoint-title">🎯 Week 5 Integration Mastery</div>
+                    <p><strong>Target:</strong> 85%+ on complex integrated problems</p>
+                    <ul>
+                        <li>Solve 3 problems combining multiple physics topics</li>
+                        <li>Solve 3 problems combining multiple chemistry topics</li>
+                        <li>Analyze 2 complete NMR spectra for structure determination</li>
+                        <li>Complete 1 full medical physics calculation set</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 6-8: Intensive Practice Phase -->
+        <div class="week-container">
+            <div class="week-header" onclick="toggleWeek(6)">
+                <div class="week-title">Weeks 6-8: Intensive Practice & Speed Building</div>
+                <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content" id="week6">
+                <div class="day-section">
+                    <div class="day-title">
+                        🎯 Phase 2: Speed & Accuracy Development
+                    </div>
+                    
+                    <div class="pattern-analysis">
+                        <div class="pattern-title">📊 Practice Phase Strategy</div>
+                        <p><strong>Focus Areas:</strong></p>
+                        <ul>
+                            <li><strong>Week 6:</strong> Timed past paper sections (by topic)</li>
+                            <li><strong>Week 7:</strong> Full paper practice under exam conditions</li>
+                            <li><strong>Week 8:</strong> Weak area blitz + final revision</li>
+                        </ul>
+                    </div>
+
+                    <div class="mastery-protocol">
+                        <div class="protocol-title">🔧 Practice Phase Protocol</div>
+                        <ol>
+                            <li><strong>Daily Schedule:</strong> 3 hours physics, 3 hours chemistry</li>
+                            <li><strong>Timing Practice:</strong> 1.5 minutes per mark as target</li>
+                            <li><strong>Error Analysis:</strong> Categorize mistakes (calculation, concept, time pressure)</li>
+                            <li><strong>Speed Building:</strong> Repeat similar questions until automatic</li>
+                        </ol>
+                    </div>
+
+                    <div class="cambridge-tricks">
+                        <div class="tricks-title">🎯 Exam Technique Refinement</div>
+                        <ul>
+                            <li><strong>Question Selection:</strong> Attempt easiest questions first</li>
+                            <li><strong>Time Management:</strong> Don't spend >5 minutes on any single part</li>
+                            <li><strong>Working Clarity:</strong> Show all steps clearly for partial marks</li>
+                            <li><strong>Unit Checking:</strong> Always verify final answer units make sense</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="checkpoint">
+                    <div class="checkpoint-title">🎯 Intensive Practice Targets</div>
+                    <p><strong>Week 6-8 Goals:</strong></p>
+                    <ul>
+                        <li><strong>Speed:</strong> Reduce time per question by 20%</li>
+                        <li><strong>Accuracy:</strong> Maintain 90%+ on familiar question types</li>
+                        <li><strong>Stamina:</strong> Complete full 2-hour papers without fatigue</li>
+                        <li><strong>Confidence:</strong> Feel prepared for any topic combination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+        <p style="text-align: center; color: white; margin-top: 10px;">
+            Your Cambridge A-Level Mastery Progress
+        </p>
+    </div>
+
+    <script>
+        function toggleWeek(weekNum) {
+            const content = document.getElementById('week' + weekNum);
+            const header = content.previousElementSibling;
+            
+            // Close all other weeks
+            const allContents = document.querySelectorAll('.week-content');
+            const allHeaders = document.querySelectorAll('.week-header');
+            
+            allContents.forEach((c, index) => {
+                if (c !== content) {
+                    c.classList.remove('active');
+                    allHeaders[index].classList.remove('active');
+                }
+            });
+            
+            // Toggle current week
+            content.classList.toggle('active');
+            header.classList.toggle('active');
+            
+            // Update progress bar
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const activeWeeks = document.querySelectorAll('.week-content.active').length;
+            const totalWeeks = document.querySelectorAll('.week-content').length;
+            const percentage = (activeWeeks / totalWeeks) * 100;
+            
+            document.getElementById('progressBar').style.width = percentage + '%';
+        }
+        
+        // Initialize with first week open
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleWeek(1);
+        });
+        
+        // Add some interactive animations
+        document.querySelectorAll('.day-section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>
