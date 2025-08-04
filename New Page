@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge A-Level Mastery Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .nav-menu h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .week-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .week-link {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .week-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(116, 185, 255, 0.3);
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .week-page {
+            display: none;
+        }
+        
+        .week-page.active {
+            display: block;
+        }
+        
+        .week-header {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .week-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .day-section {
+            margin-bottom: 40px;
+            border-left: 4px solid #74b9ff;
+            padding-left: 25px;
+        }
+        
+        .day-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00cbc4;
+        }
+        
+        .day-header h3 {
+            color: #2d3436;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        
+        .subject-block {
+            background: #fdcb6e;
+            color: #2d3436;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .physics { background: #74b9ff; color: white; }
+        .chemistry { background: #fd79a8; color: white; }
+        .economics { background: #fdcb6e; color: #2d3436; }
+        .literature { background: #a29bfe; color: white; }
+        
+        .topic-analysis {
+            background: #f1f2f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .pattern-box {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .pattern-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .question-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .question-type {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #e17055;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .question-type h5 {
+            color: #e17055;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .marks {
+            background: #00b894;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .cambridge-tricks {
+            background: #fab1a0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .cambridge-tricks h4 {
+            color: #e84393;
+            margin-bottom: 10px;
+        }
+        
+        .practice-protocol {
+            background: #81ecec;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .practice-protocol h4 {
+            color: #00b894;
+            margin-bottom: 15px;
+        }
+        
+        .mastery-check {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .back-btn {
+            background: #636e72;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+        
+        .back-btn:hover {
+            background: #2d3436;
+        }
+        
+        .formula-box {
+            background: #ddd6fe;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .timeline-date {
+            background: #74b9ff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .timeline-subject {
+            margin-top: 8px;
+            font-size: 0.8em;
+            color: #636e72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cambridge A-Level Mastery Guide</h1>
+            <p>Topic-by-Topic Pattern Analysis & Application Mastery</p>
+            <p style="font-size: 1em; margin-top: 10px;">Benjamin Moutter | Chemistry, Physics, Economics, Literature</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Oct 7</div>
+                <div class="timeline-subject">Economics 23</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Oct 10</div>
+                <div class="timeline-subject">Chemistry 53</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Oct 13-17</div>
+                <div class="timeline-subject">Physics & Chemistry</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Oct 29</div>
+                <div class="timeline-subject">Literature 33</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Nov 3-12</div>
+                <div class="timeline-subject">Literature & Economics</div>
+            </div>
+        </div>
+
+        <div id="main-menu">
+            <div class="nav-menu">
+                <h3>Weekly Topic Mastery Schedule</h3>
+                <div class="week-links">
+                    <a href="#" class="week-link" onclick="showWeek('week1')">Week 1: Motion & Energetics</a>
+                    <a href="#" class="week-link" onclick="showWeek('week2')">Week 2: Fields & Equilibrium</a>
+                    <a href="#" class="week-link" onclick="showWeek('week3')">Week 3: Waves & Kinetics</a>
+                    <a href="#" class="week-link" onclick="showWeek('week4')">Week 4: Quantum & Thermodynamics</a>
+                    <a href="#" class="week-link" onclick="showWeek('week5')">Week 5: Organic Mechanisms</a>
+                    <a href="#" class="week-link" onclick="showWeek('week6')">Week 6: Transition Elements</a>
+                    <a href="#" class="week-link" onclick="showWeek('week7')">Week 7: Advanced Applications</a>
+                    <a href="#" class="week-link" onclick="showWeek('week8')">Week 8: Integration & Synthesis</a>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h2>The Cambridge Pattern Philosophy</h2>
+                <p>Cambridge examiners are predictable. Each topic has specific <strong>Question DNA</strong> - recognizable patterns in how they test concepts. Master these patterns, and you'll approach every question with confidence.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: #74b9ff; color: white; padding: 20px; border-radius: 10px;">
+                        <h4>Question DNA</h4>
+                        <p>Specific ways Cambridge tests each concept</p>
+                    </div>
+                    <div style="background: #fd79a8; color: white; padding: 20px; border-radius: 10px;">
+                        <h4>Mark Patterns</h4>
+                        <p>Predictable point allocations per topic</p>
+                    </div>
+                    <div style="background: #fdcb6e; color: #2d3436; padding: 20px; border-radius: 10px;">
+                        <h4>Command Words</h4>
+                        <p>Favorite verbs for each topic area</p>
+                    </div>
+                    <div style="background: #a29bfe; color: white; padding: 20px; border-radius: 10px;">
+                        <h4>Common Traps</h4>
+                        <p>How they try to catch you out</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 1 Content -->
+        <div id="week1" class="week-page">
+            <button class="back-btn" onclick="showMain()">← Back to Main Menu</button>
+            
+            <div class="week-header">
+                <h2>Week 1: Motion & Energetics Foundation</h2>
+                <p>Master circular motion, chemical energetics, and fundamental motion patterns</p>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Monday: Physics - Circular Motion & Gravitation</h3>
+                    <span class="subject-block physics">Physics Paper 43</span>
+                </div>
+                
+                <div class="topic-analysis">
+                    <h4>Cambridge's Circular Motion Question DNA</h4>
+                    
+                    <div class="pattern-box">
+                        <h4>🎯 The Big 4 Question Types (Appear in 90% of papers)</h4>
+                        <div class="question-types">
+                            <div class="question-type">
+                                <h5>Centripetal Force Calculations <span class="marks">4-6 marks</span></h5>
+                                <p>Always involves F = mv²/r or F = mrω². Cambridge loves objects on strings, car cornering, and satellite orbits.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Angular/Linear Speed Conversion <span class="marks">2-3 marks</span></h5>
+                                <p>Using v = rω and ω = 2π/T. Watch for unit conversions (rad/s vs rpm).</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Banking/Friction Problems <span class="marks">6-8 marks</span></h5>
+                                <p>Combining circular motion with force resolution. Always resolve normal force components.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Gravitational Orbits <span class="marks">8-12 marks</span></h5>
+                                <p>F = GMm/r² = mv²/r for orbital mechanics. Often linked to energy considerations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambridge-tricks">
+                        <h4>⚠️ Cambridge's Favorite Tricks</h4>
+                        <ul>
+                            <li><strong>Unit Confusion:</strong> Mixing rad/s with rpm, degrees with radians</li>
+                            <li><strong>Direction Errors:</strong> Centripetal force points inward, not outward</li>
+                            <li><strong>Multiple Force Analysis:</strong> Banking problems with weight, normal, friction</li>
+                            <li><strong>Geostationary Orbits:</strong> Always 24-hour period, above equator</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <strong>Essential Formulas:</strong><br>
+                        • v = rω | ω = 2π/T | a = v²/r = rω² <br>
+                        • F = mv²/r = mrω² <br>
+                        • g = GM/r² | F = GMm/r² <br>
+                        • For orbits: mg = mv²/r → v = √(GM/r)
+                    </div>
+                </div>
+                
+                <div class="practice-protocol">
+                    <h4>🎯 Monday Practice Protocol</h4>
+                    <ol>
+                        <li><strong>Pattern Recognition (1 hour):</strong> Analyze 10 past paper circular motion questions</li>
+                        <li><strong>Template Practice (2 hours):</strong> Practice each question type 5 times</li>
+                        <li><strong>Speed Building (1 hour):</strong> Time yourself on mixed circular motion problems</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Tuesday: Chemistry - Chemical Energetics (Born-Haber Cycles)</h3>
+                    <span class="subject-block chemistry">Chemistry Paper 43</span>
+                </div>
+                
+                <div class="topic-analysis">
+                    <h4>Cambridge's Energetics Question DNA</h4>
+                    
+                    <div class="pattern-box">
+                        <h4>🎯 The Born-Haber Big 3 (95% of energetics questions)</h4>
+                        <div class="question-types">
+                            <div class="question-type">
+                                <h5>Cycle Construction <span class="marks">6-8 marks</span></h5>
+                                <p>Drawing Born-Haber cycles from scratch. Always start with elements in standard states.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Missing Energy Calculation <span class="marks">4-6 marks</span></h5>
+                                <p>Calculate lattice energy, electron affinity, or enthalpy of formation using Hess's law.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Trend Explanations <span class="marks">3-4 marks</span></h5>
+                                <p>Explain why lattice energies increase with charge density (smaller ions, higher charges).</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambridge-tricks">
+                        <h4>⚠️ Cambridge's Energetics Traps</h4>
+                        <ul>
+                            <li><strong>Sign Conventions:</strong> Lattice energy can be defined as formation OR breaking</li>
+                            <li><strong>Atomization vs Dissociation:</strong> ΔH_at for Cl₂ → 2Cl is +242, not +121 per Cl</li>
+                            <li><strong>Electron Affinity Signs:</strong> First EA usually negative, second always positive</li>
+                            <li><strong>State Symbols:</strong> Always specify (s), (g), (aq) in cycle arrows</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <strong>Essential Definitions:</strong><br>
+                        • Lattice Energy: ΔH for M⁺(g) + X⁻(g) → MX(s)<br>
+                        • Enthalpy of Atomization: ΔH for ½X₂(g) → X(g)<br>
+                        • Electron Affinity: ΔH for X(g) + e⁻ → X⁻(g)<br>
+                        • Born-Haber: ΔH_f = ΔH_at + IE + EA + ΔH_latt
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Wednesday: Physics - Gravitational Fields</h3>
+                    <span class="subject-block physics">Physics Paper 43</span>
+                </div>
+                
+                <div class="topic-analysis">
+                    <h4>Cambridge's Gravitational Field Patterns</h4>
+                    
+                    <div class="pattern-box">
+                        <h4>🎯 Gravitational Field Question Types</h4>
+                        <div class="question-types">
+                            <div class="question-type">
+                                <h5>Field Strength Calculations <span class="marks">3-4 marks</span></h5>
+                                <p>Using g = GM/r². Often combined with weight calculations or orbital problems.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Potential Energy Problems <span class="marks">6-8 marks</span></h5>
+                                <p>Using E_p = -GMm/r. Watch for energy changes in orbital transfers.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Escape Velocity <span class="marks">4-6 marks</span></h5>
+                                <p>Setting kinetic energy equal to gravitational potential energy at infinity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambridge-tricks">
+                        <h4>⚠️ Gravitational Field Traps</h4>
+                        <ul>
+                            <li><strong>Negative Potential:</strong> Gravitational potential is always negative</li>
+                            <li><strong>r vs h:</strong> Use distance from center (r), not height above surface (h)</li>
+                            <li><strong>Field Lines:</strong> Point toward mass, not away from it</li>
+                            <li><strong>Uniform vs Non-uniform:</strong> g ≈ constant only for small height changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Thursday: Chemistry - Entropy & Gibbs Free Energy</h3>
+                    <span class="subject-block chemistry">Chemistry Paper 43</span>
+                </div>
+                
+                <div class="topic-analysis">
+                    <h4>Cambridge's Thermodynamics Question DNA</h4>
+                    
+                    <div class="pattern-box">
+                        <h4>🎯 Entropy & Gibbs Energy Patterns</h4>
+                        <div class="question-types">
+                            <div class="question-type">
+                                <h5>Entropy Change Predictions <span class="marks">2-3 marks</span></h5>
+                                <p>Predict ΔS sign for melting, dissolving, gas reactions. More disorder = positive ΔS.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Gibbs Energy Calculations <span class="marks">4-6 marks</span></h5>
+                                <p>Using ΔG = ΔH - TΔS. Often involves finding temperature where ΔG = 0.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Feasibility Predictions <span class="marks">3-4 marks</span></h5>
+                                <p>ΔG < 0 = feasible. Explain temperature effects on feasibility.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <strong>Key Relationships:</strong><br>
+                        • ΔS = ΣS°(products) - ΣS°(reactants)<br>
+                        • ΔG° = ΔH° - TΔS°<br>
+                        • ΔG < 0: feasible | ΔG > 0: not feasible<br>
+                        • At equilibrium: ΔG = 0, so T = ΔH°/ΔS°
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Friday: Integration & Speed Building</h3>
+                    <span class="subject-block physics">Physics</span>
+                    <span class="subject-block chemistry">Chemistry</span>
+                </div>
+                
+                <div class="practice-protocol">
+                    <h4>🎯 Friday Integration Protocol</h4>
+                    <ol>
+                        <li><strong>Cross-Topic Problems (2 hours):</strong> Questions combining circular motion with energy</li>
+                        <li><strong>Speed Challenges (1.5 hours):</strong> Timed mixed problems from both subjects</li>
+                        <li><strong>Error Analysis (1 hour):</strong> Review and categorize mistakes from the week</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mastery-check">
+                <h4>🏆 Week 1 Mastery Checkpoint</h4>
+                <p><strong>Before moving to Week 2, you must achieve:</strong></p>
+                <ul>
+                    <li>85%+ accuracy on 10 circular motion problems (mixed types)</li>
+                    <li>Perfect Born-Haber cycle construction for NaCl, MgO, CaF₂</li>
+                    <li>Complete gravitational field problem in under 8 minutes</li>
+                    <li>Correctly predict feasibility for 5 different reactions using Gibbs energy</li>
+                </ul>
+                <p><strong>If not achieved:</strong> Spend weekend targeting weak areas before Week 2</p>
+            </div>
+        </div>
+
+        <!-- Week 2 Content -->
+        <div id="week2" class="week-page">
+            <button class="back-btn" onclick="showMain()">← Back to Main Menu</button>
+            
+            <div class="week-header">
+                <h2>Week 2: Fields & Equilibrium Mastery</h2>
+                <p>Electric fields, electrochemistry, and equilibrium systems</p>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Monday: Physics - Electric Fields</h3>
+                    <span class="subject-block physics">Physics Paper 43</span>
+                </div>
+                
+                <div class="topic-analysis">
+                    <h4>Cambridge's Electric Field Question DNA</h4>
+                    
+                    <div class="pattern-box">
+                        <h4>🎯 Electric Field Core Patterns</h4>
+                        <div class="question-types">
+                            <div class="question-type">
+                                <h5>Uniform Field Problems <span class="marks">4-6 marks</span></h5>
+                                <p>Parallel plates: E = V/d. Often involves charged particle motion between plates.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Point Charge Fields <span class="marks">6-8 marks</span></h5>
+                                <p>E = Q/(4πε₀r²). Multiple charges require vector addition of field strengths.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Electric Potential <span class="marks">5-7 marks</span></h5>
+                                <p>V = Q/(4πε₀r) for point charges. Potential energy = qV calculations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambridge-tricks">
+                        <h4>⚠️ Electric Field Traps</h4>
+                        <ul>
+                            <li><strong>Field Direction:</strong> Points from + to -, force on +q is in field direction</li>
+                            <li><strong>Potential vs Field:</strong> E = -dV/dx (field is negative potential gradient)</li>
+                            <li><strong>Vector Addition:</strong> Fields add vectorially, potentials add algebraically</li>
+                            <li><strong>Work Done:</strong> W = qΔV, positive if moved against field</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-section">
+                <div class="day-header">
+                    <h3>Tuesday: Chemistry - Electrochemistry</h3>
+                    <span class="subject-block chemistry">Chemistry Paper 43</span>
+                </div>
+                
+                <div class="topic-analysis">
+                    <h4>Cambridge's Electrochemistry Patterns</h4>
+                    
+                    <div class="pattern-box">
+                        <h4>🎯 Electrochemistry Question Types</h4>
+                        <div class="question-types">
+                            <div class="question-type">
+                                <h5>Standard Electrode Potentials <span class="marks">4-6 marks</span></h5>
+                                <p>Calculate E°cell = E°cathode - E°anode. Predict reaction feasibility.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Electrolysis Calculations <span class="marks">6-8 marks</span></h5>
+                                <p>Using Q = It and F = 96,500 C/mol. Calculate masses or volumes produced.</p>
+                            </div>
+                            <div class="question-type">
+                                <h5>Nernst Equation <span class="marks">5-7 marks</span></h5>
+                                <p>E = E° + (0.059/z)log[oxidized]/[reduced]. Concentration effects on potential.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cambridge-tricks">
+                        <h4>⚠️ Electrochemistry Traps</h4>
+                        <ul>
+                            <li><strong>Electrode Assignment:</strong> More positive E° = cathode (reduction)</li>
+                            <li><strong>Electron Flow:</strong> External circuit: anode → cathode</li>
+                            <li><strong>Faraday Calculations:</strong> n(electrons) = Q/F, then use mole ratios</li>
+                            <li><strong>Concentration Cells:</strong> Same electrodes, different concentrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mastery-check">
+                <h4>🏆 Week 2 Mastery Checkpoint</h4
